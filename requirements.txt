@@ -1,0 +1,19 @@
+# Data processing
+numpy
+pandas
+scikit-learn
+
+# Visualization
+matplotlib
+seaborn
+
+# Deep learning (uncomment if needed)
+# tensorflow
+# pytorch
+# keras
+
+# Jupyter notebooks
+jupyter
+
+# Utilities
+tqdm

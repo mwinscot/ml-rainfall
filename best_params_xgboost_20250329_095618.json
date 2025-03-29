@@ -1,0 +1,13 @@
+{
+    "n_estimators": 412,
+    "max_depth": 4,
+    "learning_rate": 0.012875008626555221,
+    "subsample": 0.9078242243681212,
+    "colsample_bytree": 0.591862055398215,
+    "min_child_weight": 8,
+    "gamma": 0.446296513574009,
+    "reg_alpha": 5.302523442648221e-06,
+    "reg_lambda": 8.439073332306782,
+    "scale_pos_weight": 7.675184588140441,
+    "objective": "binary:logistic"
+}

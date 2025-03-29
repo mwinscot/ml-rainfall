@@ -1,0 +1,355 @@
+2025-03-29 09:12:36,396 - src.data_processing - INFO - Loading data from data/train.csv and data/test.csv
+2025-03-29 09:12:36,419 - src.data_processing - INFO - Train shape: (2190, 13), Test shape: (730, 12)
+2025-03-29 09:12:36,420 - src.data_processing - INFO - Inspecting train
+2025-03-29 09:12:36,464 - src.data_processing - INFO - train shape: (2190, 13)
+2025-03-29 09:12:36,464 - src.data_processing - INFO - Inspecting test
+2025-03-29 09:12:36,484 - src.data_processing - INFO - test shape: (730, 12)
+2025-03-29 09:12:36,486 - src.data_processing - INFO - test missing values: {'winddirection': 1}
+2025-03-29 09:12:36,487 - src.data_processing - INFO - Cleaning train dataset
+2025-03-29 09:12:36,539 - src.data_processing - INFO - Capped 4 outliers in column pressure
+2025-03-29 09:12:36,594 - src.data_processing - INFO - Capped 1 outliers in column mintemp
+2025-03-29 09:12:36,612 - src.data_processing - INFO - Capped 26 outliers in column dewpoint
+2025-03-29 09:12:36,663 - src.data_processing - INFO - Capped 28 outliers in column humidity
+2025-03-29 09:12:36,701 - src.data_processing - INFO - Capped 129 outliers in column cloud
+2025-03-29 09:12:36,773 - src.data_processing - INFO - Capped 28 outliers in column windspeed
+2025-03-29 09:12:36,779 - src.data_processing - INFO - Capped 540 outliers in column rainfall
+2025-03-29 09:12:36,779 - src.data_processing - INFO - Cleaned train dataset, shape: (2190, 13)
+2025-03-29 09:12:36,779 - src.data_processing - INFO - Cleaning test dataset
+2025-03-29 09:12:36,809 - src.data_processing - INFO - Cleaned test dataset, shape: (730, 12)
+2025-03-29 09:12:36,810 - src.data_processing - INFO - Splitting data with test_size=0.2, random_state=42
+2025-03-29 09:12:36,832 - src.data_processing - INFO - Split data - X_train: (1752, 11), X_val: (438, 11)
+2025-03-29 09:12:36,840 - src.data_processing - INFO - Scaling features using standard scaler
+2025-03-29 09:12:36,873 - src.data_processing - INFO - Feature scaling completed
+2025-03-29 09:22:24,768 - src.data_processing - INFO - Loading data from data/train.csv and data/test.csv
+2025-03-29 09:22:24,792 - src.data_processing - INFO - Train shape: (2190, 13), Test shape: (730, 12)
+2025-03-29 09:22:24,793 - src.data_processing - INFO - Inspecting train
+2025-03-29 09:22:24,841 - src.data_processing - INFO - train shape: (2190, 13)
+2025-03-29 09:22:24,841 - src.data_processing - INFO - Inspecting test
+2025-03-29 09:22:24,863 - src.data_processing - INFO - test shape: (730, 12)
+2025-03-29 09:22:24,863 - src.data_processing - INFO - test missing values: {'winddirection': 1}
+2025-03-29 09:22:24,863 - src.feature_engineering - INFO - Creating new features
+2025-03-29 09:22:24,880 - src.feature_engineering - INFO - Created 4 new features: ['wind_x', 'wind_y', 'temp_range', 'cloud_humidity']
+2025-03-29 09:22:24,881 - src.feature_engineering - INFO - Creating new features
+2025-03-29 09:22:24,893 - src.feature_engineering - INFO - Created 4 new features: ['wind_x', 'wind_y', 'temp_range', 'cloud_humidity']
+2025-03-29 09:22:24,894 - src.data_processing - INFO - Cleaning train dataset
+2025-03-29 09:22:24,931 - src.data_processing - INFO - Capped 4 outliers in column pressure
+2025-03-29 09:22:24,945 - src.data_processing - INFO - Capped 1 outliers in column mintemp
+2025-03-29 09:22:24,947 - src.data_processing - INFO - Capped 26 outliers in column dewpoint
+2025-03-29 09:22:24,956 - src.data_processing - INFO - Capped 28 outliers in column humidity
+2025-03-29 09:22:24,961 - src.data_processing - INFO - Capped 129 outliers in column cloud
+2025-03-29 09:22:24,975 - src.data_processing - INFO - Capped 28 outliers in column windspeed
+2025-03-29 09:22:24,978 - src.data_processing - INFO - Capped 540 outliers in column rainfall
+2025-03-29 09:22:24,981 - src.data_processing - INFO - Capped 8 outliers in column wind_x
+2025-03-29 09:22:24,991 - src.data_processing - INFO - Capped 2 outliers in column wind_y
+2025-03-29 09:22:24,993 - src.data_processing - INFO - Capped 22 outliers in column temp_range
+2025-03-29 09:22:24,998 - src.data_processing - INFO - Capped 54 outliers in column cloud_humidity
+2025-03-29 09:22:24,998 - src.data_processing - INFO - Cleaned train dataset, shape: (2190, 17)
+2025-03-29 09:22:24,998 - src.data_processing - INFO - Cleaning test dataset
+2025-03-29 09:22:25,022 - src.data_processing - INFO - Cleaned test dataset, shape: (730, 16)
+2025-03-29 09:22:25,022 - src.data_processing - INFO - Splitting data with test_size=0.2, random_state=42
+2025-03-29 09:24:29,856 - src.data_processing - INFO - Loading data from data/train.csv and data/test.csv
+2025-03-29 09:24:29,881 - src.data_processing - INFO - Train shape: (2190, 13), Test shape: (730, 12)
+2025-03-29 09:24:29,883 - src.data_processing - INFO - Inspecting train
+2025-03-29 09:24:29,935 - src.data_processing - INFO - train shape: (2190, 13)
+2025-03-29 09:24:29,936 - src.data_processing - INFO - Inspecting test
+2025-03-29 09:24:29,952 - src.data_processing - INFO - test shape: (730, 12)
+2025-03-29 09:24:29,953 - src.data_processing - INFO - test missing values: {'winddirection': 1}
+2025-03-29 09:24:29,953 - src.feature_engineering - INFO - Creating new features
+2025-03-29 09:24:29,958 - src.feature_engineering - INFO - Created 4 new features: ['wind_x', 'wind_y', 'temp_range', 'cloud_humidity']
+2025-03-29 09:24:29,959 - src.feature_engineering - INFO - Creating new features
+2025-03-29 09:24:29,960 - src.feature_engineering - INFO - Created 4 new features: ['wind_x', 'wind_y', 'temp_range', 'cloud_humidity']
+2025-03-29 09:24:29,960 - src.data_processing - INFO - Cleaning train dataset
+2025-03-29 09:24:29,978 - src.data_processing - INFO - Capped 4 outliers in column pressure
+2025-03-29 09:24:29,981 - src.data_processing - INFO - Capped 1 outliers in column mintemp
+2025-03-29 09:24:29,988 - src.data_processing - INFO - Capped 26 outliers in column dewpoint
+2025-03-29 09:24:29,992 - src.data_processing - INFO - Capped 28 outliers in column humidity
+2025-03-29 09:24:29,995 - src.data_processing - INFO - Capped 129 outliers in column cloud
+2025-03-29 09:24:30,004 - src.data_processing - INFO - Capped 28 outliers in column windspeed
+2025-03-29 09:24:30,008 - src.data_processing - INFO - Capped 8 outliers in column wind_x
+2025-03-29 09:24:30,011 - src.data_processing - INFO - Capped 2 outliers in column wind_y
+2025-03-29 09:24:30,014 - src.data_processing - INFO - Capped 22 outliers in column temp_range
+2025-03-29 09:24:30,023 - src.data_processing - INFO - Capped 54 outliers in column cloud_humidity
+2025-03-29 09:24:30,023 - src.data_processing - INFO - Cleaned train dataset, shape: (2190, 17)
+2025-03-29 09:24:30,023 - src.data_processing - INFO - Cleaning test dataset
+2025-03-29 09:24:30,031 - src.data_processing - INFO - Cleaned test dataset, shape: (730, 16)
+2025-03-29 09:24:30,031 - src.data_processing - INFO - Splitting data with test_size=0.2, random_state=42
+2025-03-29 09:24:30,043 - src.data_processing - INFO - Split data - X_train: (1752, 15), X_val: (438, 15)
+2025-03-29 09:24:30,045 - src.data_processing - INFO - Scaling features using standard scaler
+2025-03-29 09:24:30,062 - src.data_processing - INFO - Feature scaling completed
+2025-03-29 09:24:30,074 - src.model_training - INFO - Starting xgboost optimization with 20 trials
+2025-03-29 09:24:30,634 - src.model_training - INFO - Trial RMSE: 0.3128
+2025-03-29 09:24:31,433 - src.model_training - INFO - Trial RMSE: 0.3257
+2025-03-29 09:24:32,358 - src.model_training - INFO - Trial RMSE: 0.3134
+2025-03-29 09:24:33,862 - src.model_training - INFO - Trial RMSE: 0.3154
+2025-03-29 09:24:35,463 - src.model_training - INFO - Trial RMSE: 0.3154
+2025-03-29 09:24:37,054 - src.model_training - INFO - Trial RMSE: 0.3162
+2025-03-29 09:24:38,256 - src.model_training - INFO - Trial RMSE: 0.3124
+2025-03-29 09:24:39,377 - src.model_training - INFO - Trial RMSE: 0.3133
+2025-03-29 09:24:39,995 - src.model_training - INFO - Trial RMSE: 0.3128
+2025-03-29 09:24:40,556 - src.model_training - INFO - Trial RMSE: 0.3151
+2025-03-29 09:24:42,844 - src.model_training - INFO - Trial RMSE: 0.3122
+2025-03-29 09:24:44,962 - src.model_training - INFO - Trial RMSE: 0.3103
+2025-03-29 09:24:47,298 - src.model_training - INFO - Trial RMSE: 0.3120
+2025-03-29 09:24:49,204 - src.model_training - INFO - Trial RMSE: 0.3113
+2025-03-29 09:24:51,047 - src.model_training - INFO - Trial RMSE: 0.3140
+2025-03-29 09:24:52,425 - src.model_training - INFO - Trial RMSE: 0.3102
+2025-03-29 09:24:54,145 - src.model_training - INFO - Trial RMSE: 0.3125
+2025-03-29 09:24:55,645 - src.model_training - INFO - Trial RMSE: 0.3131
+2025-03-29 09:24:56,972 - src.model_training - INFO - Trial RMSE: 0.3131
+2025-03-29 09:24:58,460 - src.model_training - INFO - Trial RMSE: 0.3112
+2025-03-29 09:24:58,462 - src.model_training - INFO - Best RMSE: 0.3102
+2025-03-29 09:24:58,462 - src.model_training - INFO - Best parameters: {'n_estimators': 749, 'max_depth': 8, 'learning_rate': 0.06560352923571272, 'subsample': 0.6833897815951733, 'colsample_bytree': 0.5890195514692125, 'min_child_weight': 7, 'gamma': 0.8465147211671131, 'reg_alpha': 0.043221314087586164, 'reg_lambda': 5.302990065332894}
+2025-03-29 09:24:58,462 - src.model_training - INFO - Evaluating model performance
+2025-03-29 09:24:59,818 - src.model_training - INFO - Cross-validation RMSE: 0.3102 ± 0.0245
+2025-03-29 09:24:59,819 - src.model_training - INFO - Validation scores: [0.29708289 0.32130746 0.34124549 0.32123952 0.27008637]
+2025-03-29 09:25:00,142 - src.model_training - INFO - Validation RMSE: 0.3385
+2025-03-29 09:25:00,142 - src.model_training - INFO - Validation MAE: 0.2131
+2025-03-29 09:25:00,147 - src.model_training - INFO - Training final model
+2025-03-29 09:25:00,425 - src.submission - INFO - Creating submission file
+2025-03-29 09:25:00,440 - src.submission - INFO - Submission saved to submissions/submission_20250329_092500.csv
+2025-03-29 09:25:00,442 - __main__ - INFO - Submission file created: submissions/submission_20250329_092500.csv
+2025-03-29 09:37:51,075 - src.data_processing - INFO - Loading data from data/train.csv and data/test.csv
+2025-03-29 09:37:51,125 - src.data_processing - INFO - Train shape: (2190, 13), Test shape: (730, 12)
+2025-03-29 09:37:51,126 - src.feature_engineering - INFO - Creating new features
+2025-03-29 09:37:51,141 - src.feature_engineering - INFO - Created 4 new features: ['wind_x', 'wind_y', 'temp_range', 'cloud_humidity']
+2025-03-29 09:37:51,141 - src.feature_engineering - INFO - Creating new features
+2025-03-29 09:37:51,143 - src.feature_engineering - INFO - Created 4 new features: ['wind_x', 'wind_y', 'temp_range', 'cloud_humidity']
+2025-03-29 09:37:51,144 - src.data_processing - INFO - Cleaning train dataset
+2025-03-29 09:37:51,182 - src.data_processing - INFO - Capped 4 outliers in column pressure
+2025-03-29 09:37:51,194 - src.data_processing - INFO - Capped 1 outliers in column mintemp
+2025-03-29 09:37:51,196 - src.data_processing - INFO - Capped 26 outliers in column dewpoint
+2025-03-29 09:37:51,197 - src.data_processing - INFO - Capped 28 outliers in column humidity
+2025-03-29 09:37:51,199 - src.data_processing - INFO - Capped 129 outliers in column cloud
+2025-03-29 09:37:51,212 - src.data_processing - INFO - Capped 28 outliers in column windspeed
+2025-03-29 09:37:51,213 - src.data_processing - INFO - Capped 8 outliers in column wind_x
+2025-03-29 09:37:51,216 - src.data_processing - INFO - Capped 2 outliers in column wind_y
+2025-03-29 09:37:51,225 - src.data_processing - INFO - Capped 22 outliers in column temp_range
+2025-03-29 09:37:51,227 - src.data_processing - INFO - Capped 54 outliers in column cloud_humidity
+2025-03-29 09:37:51,228 - src.data_processing - INFO - Cleaned train dataset, shape: (2190, 17)
+2025-03-29 09:37:51,228 - src.data_processing - INFO - Cleaning test dataset
+2025-03-29 09:37:51,232 - src.data_processing - INFO - Cleaned test dataset, shape: (730, 16)
+2025-03-29 09:37:51,232 - src.data_processing - INFO - Splitting data with test_size=0.2, random_state=42
+2025-03-29 09:37:51,246 - src.data_processing - INFO - Split data - X_train: (1752, 15), X_val: (438, 15)
+2025-03-29 09:37:51,247 - src.data_processing - INFO - Scaling features using standard scaler
+2025-03-29 09:37:51,265 - src.data_processing - INFO - Feature scaling completed
+2025-03-29 09:37:51,266 - src.hyperparameter_tuning - INFO - Treating as a regression problem
+2025-03-29 09:37:51,266 - src.hyperparameter_tuning - INFO - Running xgboost hyperparameter optimization with 50 trials
+2025-03-29 09:39:12,189 - src.hyperparameter_tuning - INFO - Best RMSE: -0.3538
+2025-03-29 09:39:12,190 - src.hyperparameter_tuning - INFO - Best parameters: {'n_estimators': 460, 'max_depth': 7, 'learning_rate': 0.25860025214756166, 'subsample': 0.6899801052043151, 'colsample_bytree': 0.9994965506713842, 'min_child_weight': 10, 'gamma': 0.03060049913031459, 'reg_alpha': 0.00025172329415833644, 'reg_lambda': 1.4247594160569321}
+2025-03-29 09:39:12,190 - src.hyperparameter_tuning - INFO - Training xgboost model with optimized parameters
+2025-03-29 09:39:12,523 - src.hyperparameter_tuning - INFO - Validation RMSE: 0.3694
+2025-03-29 09:39:12,523 - src.hyperparameter_tuning - INFO - Training final model on all data
+2025-03-29 09:39:12,861 - src.submission - INFO - Creating submission file
+2025-03-29 09:39:12,873 - src.submission - INFO - Submission saved to submissions/xgboost_opt_20250329_093912.csv
+2025-03-29 09:39:12,873 - src.hyperparameter_tuning - INFO - Submission file created: submissions/xgboost_opt_20250329_093912.csv
+2025-03-29 09:39:12,875 - src.hyperparameter_tuning - INFO - Best parameters saved to best_params_xgboost_20250329_093912.json
+2025-03-29 09:39:31,898 - src.data_processing - INFO - Loading data from data/train.csv and data/test.csv
+2025-03-29 09:39:31,928 - src.data_processing - INFO - Train shape: (2190, 13), Test shape: (730, 12)
+2025-03-29 09:39:31,928 - src.feature_engineering - INFO - Creating new features
+2025-03-29 09:39:31,946 - src.feature_engineering - INFO - Created 4 new features: ['wind_x', 'wind_y', 'temp_range', 'cloud_humidity']
+2025-03-29 09:39:31,947 - src.feature_engineering - INFO - Creating new features
+2025-03-29 09:39:31,949 - src.feature_engineering - INFO - Created 4 new features: ['wind_x', 'wind_y', 'temp_range', 'cloud_humidity']
+2025-03-29 09:39:31,950 - src.data_processing - INFO - Cleaning train dataset
+2025-03-29 09:39:31,987 - src.data_processing - INFO - Capped 4 outliers in column pressure
+2025-03-29 09:39:32,001 - src.data_processing - INFO - Capped 1 outliers in column mintemp
+2025-03-29 09:39:32,007 - src.data_processing - INFO - Capped 26 outliers in column dewpoint
+2025-03-29 09:39:32,014 - src.data_processing - INFO - Capped 28 outliers in column humidity
+2025-03-29 09:39:32,018 - src.data_processing - INFO - Capped 129 outliers in column cloud
+2025-03-29 09:39:32,029 - src.data_processing - INFO - Capped 28 outliers in column windspeed
+2025-03-29 09:39:32,033 - src.data_processing - INFO - Capped 8 outliers in column wind_x
+2025-03-29 09:39:32,039 - src.data_processing - INFO - Capped 2 outliers in column wind_y
+2025-03-29 09:39:32,045 - src.data_processing - INFO - Capped 22 outliers in column temp_range
+2025-03-29 09:39:32,048 - src.data_processing - INFO - Capped 54 outliers in column cloud_humidity
+2025-03-29 09:39:32,050 - src.data_processing - INFO - Cleaned train dataset, shape: (2190, 17)
+2025-03-29 09:39:32,050 - src.data_processing - INFO - Cleaning test dataset
+2025-03-29 09:39:32,061 - src.data_processing - INFO - Cleaned test dataset, shape: (730, 16)
+2025-03-29 09:39:32,061 - src.data_processing - INFO - Splitting data with test_size=0.2, random_state=42
+2025-03-29 09:39:32,070 - src.data_processing - INFO - Split data - X_train: (1752, 15), X_val: (438, 15)
+2025-03-29 09:39:32,070 - src.data_processing - INFO - Scaling features using standard scaler
+2025-03-29 09:39:32,083 - src.data_processing - INFO - Feature scaling completed
+2025-03-29 09:39:32,085 - src.hyperparameter_tuning - INFO - Treating as a regression problem
+2025-03-29 09:39:32,085 - src.hyperparameter_tuning - INFO - Running lightgbm hyperparameter optimization with 50 trials
+2025-03-29 09:42:48,589 - src.hyperparameter_tuning - INFO - Best RMSE: -0.3625
+2025-03-29 09:42:48,595 - src.hyperparameter_tuning - INFO - Best parameters: {'n_estimators': 958, 'max_depth': 9, 'learning_rate': 0.2066191757151713, 'num_leaves': 68, 'subsample': 0.6814714960513243, 'colsample_bytree': 0.6844213950561788, 'min_child_samples': 77, 'reg_alpha': 5.294760646806712e-05, 'reg_lambda': 2.006255137864642e-07}
+2025-03-29 09:42:48,609 - src.hyperparameter_tuning - INFO - Training lightgbm model with optimized parameters
+2025-03-29 09:42:49,512 - src.hyperparameter_tuning - INFO - Validation RMSE: 0.3729
+2025-03-29 09:42:49,512 - src.hyperparameter_tuning - INFO - Training final model on all data
+2025-03-29 09:42:50,316 - src.submission - INFO - Creating submission file
+2025-03-29 09:42:50,400 - src.submission - INFO - Submission saved to submissions/lightgbm_opt_20250329_094250.csv
+2025-03-29 09:42:50,401 - src.hyperparameter_tuning - INFO - Submission file created: submissions/lightgbm_opt_20250329_094250.csv
+2025-03-29 09:42:50,405 - src.hyperparameter_tuning - INFO - Best parameters saved to best_params_lightgbm_20250329_094250.json
+2025-03-29 09:42:56,220 - src.data_processing - INFO - Loading data from data/train.csv and data/test.csv
+2025-03-29 09:42:56,227 - src.data_processing - INFO - Train shape: (2190, 13), Test shape: (730, 12)
+2025-03-29 09:42:56,227 - src.feature_engineering - INFO - Creating new features
+2025-03-29 09:42:56,242 - src.feature_engineering - INFO - Created 4 new features: ['wind_x', 'wind_y', 'temp_range', 'cloud_humidity']
+2025-03-29 09:42:56,242 - src.feature_engineering - INFO - Creating new features
+2025-03-29 09:42:56,246 - src.feature_engineering - INFO - Created 4 new features: ['wind_x', 'wind_y', 'temp_range', 'cloud_humidity']
+2025-03-29 09:42:56,246 - src.data_processing - INFO - Cleaning train dataset
+2025-03-29 09:42:56,265 - src.data_processing - INFO - Capped 4 outliers in column pressure
+2025-03-29 09:42:56,277 - src.data_processing - INFO - Capped 1 outliers in column mintemp
+2025-03-29 09:42:56,280 - src.data_processing - INFO - Capped 26 outliers in column dewpoint
+2025-03-29 09:42:56,282 - src.data_processing - INFO - Capped 28 outliers in column humidity
+2025-03-29 09:42:56,282 - src.data_processing - INFO - Capped 129 outliers in column cloud
+2025-03-29 09:42:56,290 - src.data_processing - INFO - Capped 28 outliers in column windspeed
+2025-03-29 09:42:56,293 - src.data_processing - INFO - Capped 8 outliers in column wind_x
+2025-03-29 09:42:56,293 - src.data_processing - INFO - Capped 2 outliers in column wind_y
+2025-03-29 09:42:56,297 - src.data_processing - INFO - Capped 22 outliers in column temp_range
+2025-03-29 09:42:56,298 - src.data_processing - INFO - Capped 54 outliers in column cloud_humidity
+2025-03-29 09:42:56,298 - src.data_processing - INFO - Cleaned train dataset, shape: (2190, 17)
+2025-03-29 09:42:56,298 - src.data_processing - INFO - Cleaning test dataset
+2025-03-29 09:42:56,305 - src.data_processing - INFO - Cleaned test dataset, shape: (730, 16)
+2025-03-29 09:42:56,305 - src.data_processing - INFO - Splitting data with test_size=0.2, random_state=42
+2025-03-29 09:42:56,312 - src.data_processing - INFO - Split data - X_train: (1752, 15), X_val: (438, 15)
+2025-03-29 09:42:56,313 - src.data_processing - INFO - Scaling features using standard scaler
+2025-03-29 09:42:56,326 - src.data_processing - INFO - Feature scaling completed
+2025-03-29 09:42:56,326 - src.hyperparameter_tuning - INFO - Treating as a regression problem
+2025-03-29 09:42:56,326 - src.hyperparameter_tuning - INFO - Running catboost hyperparameter optimization with 50 trials
+2025-03-29 09:54:21,000 - src.hyperparameter_tuning - INFO - Best RMSE: -0.3498
+2025-03-29 09:54:21,004 - src.hyperparameter_tuning - INFO - Best parameters: {'iterations': 456, 'depth': 5, 'learning_rate': 0.23489810159768615, 'l2_leaf_reg': 3.734023472562767e-08, 'random_strength': 3.8372460354988916e-08, 'bagging_temperature': 5.430356981598267, 'subsample': 0.9436997900015175, 'colsample_bylevel': 0.8303754020475388}
+2025-03-29 09:54:21,027 - src.hyperparameter_tuning - INFO - Training catboost model with optimized parameters
+2025-03-29 09:54:22,506 - src.hyperparameter_tuning - INFO - Validation RMSE: 0.3685
+2025-03-29 09:54:22,506 - src.hyperparameter_tuning - INFO - Training final model on all data
+2025-03-29 09:54:24,018 - src.submission - INFO - Creating submission file
+2025-03-29 09:54:24,162 - src.submission - INFO - Submission saved to submissions/catboost_opt_20250329_095424.csv
+2025-03-29 09:54:24,162 - src.hyperparameter_tuning - INFO - Submission file created: submissions/catboost_opt_20250329_095424.csv
+2025-03-29 09:54:24,165 - src.hyperparameter_tuning - INFO - Best parameters saved to best_params_catboost_20250329_095424.json
+2025-03-29 09:54:31,512 - src.data_processing - INFO - Loading data from data/train.csv and data/test.csv
+2025-03-29 09:54:31,525 - src.data_processing - INFO - Train shape: (2190, 13), Test shape: (730, 12)
+2025-03-29 09:54:31,525 - src.feature_engineering - INFO - Creating new features
+2025-03-29 09:54:31,536 - src.feature_engineering - INFO - Created 4 new features: ['wind_x', 'wind_y', 'temp_range', 'cloud_humidity']
+2025-03-29 09:54:31,539 - src.feature_engineering - INFO - Creating new features
+2025-03-29 09:54:31,544 - src.feature_engineering - INFO - Created 4 new features: ['wind_x', 'wind_y', 'temp_range', 'cloud_humidity']
+2025-03-29 09:54:31,544 - src.data_processing - INFO - Cleaning train dataset
+2025-03-29 09:54:31,577 - src.data_processing - INFO - Capped 4 outliers in column pressure
+2025-03-29 09:54:31,582 - src.data_processing - INFO - Capped 1 outliers in column mintemp
+2025-03-29 09:54:31,583 - src.data_processing - INFO - Capped 26 outliers in column dewpoint
+2025-03-29 09:54:31,591 - src.data_processing - INFO - Capped 28 outliers in column humidity
+2025-03-29 09:54:31,594 - src.data_processing - INFO - Capped 129 outliers in column cloud
+2025-03-29 09:54:31,598 - src.data_processing - INFO - Capped 28 outliers in column windspeed
+2025-03-29 09:54:31,600 - src.data_processing - INFO - Capped 8 outliers in column wind_x
+2025-03-29 09:54:31,609 - src.data_processing - INFO - Capped 2 outliers in column wind_y
+2025-03-29 09:54:31,611 - src.data_processing - INFO - Capped 22 outliers in column temp_range
+2025-03-29 09:54:31,613 - src.data_processing - INFO - Capped 54 outliers in column cloud_humidity
+2025-03-29 09:54:31,613 - src.data_processing - INFO - Cleaned train dataset, shape: (2190, 17)
+2025-03-29 09:54:31,613 - src.data_processing - INFO - Cleaning test dataset
+2025-03-29 09:54:31,617 - src.data_processing - INFO - Cleaned test dataset, shape: (730, 16)
+2025-03-29 09:54:31,618 - src.data_processing - INFO - Splitting data with test_size=0.2, random_state=42
+2025-03-29 09:54:31,627 - src.data_processing - INFO - Split data - X_train: (1752, 15), X_val: (438, 15)
+2025-03-29 09:54:31,629 - src.data_processing - INFO - Scaling features using standard scaler
+2025-03-29 09:54:31,644 - src.data_processing - INFO - Feature scaling completed
+2025-03-29 09:54:31,645 - src.hyperparameter_tuning - INFO - Treating as a classification problem
+2025-03-29 09:54:31,646 - src.hyperparameter_tuning - INFO - Running xgboost hyperparameter optimization with 50 trials
+2025-03-29 09:56:17,574 - src.hyperparameter_tuning - INFO - Best AUC: 0.9006
+2025-03-29 09:56:17,574 - src.hyperparameter_tuning - INFO - Best parameters: {'n_estimators': 412, 'max_depth': 4, 'learning_rate': 0.012875008626555221, 'subsample': 0.9078242243681212, 'colsample_bytree': 0.591862055398215, 'min_child_weight': 8, 'gamma': 0.446296513574009, 'reg_alpha': 5.302523442648221e-06, 'reg_lambda': 8.439073332306782, 'scale_pos_weight': 7.675184588140441}
+2025-03-29 09:56:17,574 - src.hyperparameter_tuning - INFO - Training xgboost model with optimized parameters
+2025-03-29 09:56:17,931 - src.hyperparameter_tuning - INFO - Validation AUC: 0.8703
+2025-03-29 09:56:17,931 - src.hyperparameter_tuning - INFO - Training final model on all data
+2025-03-29 09:56:18,297 - src.submission - INFO - Creating submission file
+2025-03-29 09:56:18,308 - src.submission - INFO - Submission saved to submissions/xgboost_opt_20250329_095618.csv
+2025-03-29 09:56:18,309 - src.hyperparameter_tuning - INFO - Submission file created: submissions/xgboost_opt_20250329_095618.csv
+2025-03-29 09:56:18,312 - src.hyperparameter_tuning - INFO - Best parameters saved to best_params_xgboost_20250329_095618.json
+2025-03-29 10:00:50,928 - src.data_processing - INFO - Loading data from data/train.csv and data/test.csv
+2025-03-29 10:00:50,962 - src.data_processing - INFO - Train shape: (2190, 13), Test shape: (730, 12)
+2025-03-29 10:00:50,962 - src.feature_engineering - INFO - Creating new features
+2025-03-29 10:00:50,978 - src.feature_engineering - INFO - Created 4 new features: ['wind_x', 'wind_y', 'temp_range', 'cloud_humidity']
+2025-03-29 10:00:50,978 - src.feature_engineering - INFO - Creating new features
+2025-03-29 10:00:50,980 - src.feature_engineering - INFO - Created 4 new features: ['wind_x', 'wind_y', 'temp_range', 'cloud_humidity']
+2025-03-29 10:00:50,980 - src.data_processing - INFO - Cleaning train dataset
+2025-03-29 10:00:51,022 - src.data_processing - INFO - Capped 4 outliers in column pressure
+2025-03-29 10:00:51,031 - src.data_processing - INFO - Capped 1 outliers in column mintemp
+2025-03-29 10:00:51,042 - src.data_processing - INFO - Capped 26 outliers in column dewpoint
+2025-03-29 10:00:51,048 - src.data_processing - INFO - Capped 28 outliers in column humidity
+2025-03-29 10:00:51,057 - src.data_processing - INFO - Capped 129 outliers in column cloud
+2025-03-29 10:00:51,079 - src.data_processing - INFO - Capped 28 outliers in column windspeed
+2025-03-29 10:00:51,080 - src.data_processing - INFO - Capped 8 outliers in column wind_x
+2025-03-29 10:00:51,083 - src.data_processing - INFO - Capped 2 outliers in column wind_y
+2025-03-29 10:00:51,094 - src.data_processing - INFO - Capped 22 outliers in column temp_range
+2025-03-29 10:00:51,104 - src.data_processing - INFO - Capped 54 outliers in column cloud_humidity
+2025-03-29 10:00:51,110 - src.data_processing - INFO - Cleaned train dataset, shape: (2190, 17)
+2025-03-29 10:00:51,110 - src.data_processing - INFO - Cleaning test dataset
+2025-03-29 10:00:51,118 - src.data_processing - INFO - Cleaned test dataset, shape: (730, 16)
+2025-03-29 10:00:51,131 - src.data_processing - INFO - Splitting data with test_size=0.2, random_state=42
+2025-03-29 10:00:51,151 - src.data_processing - INFO - Split data - X_train: (1752, 15), X_val: (438, 15)
+2025-03-29 10:00:51,161 - src.data_processing - INFO - Scaling features using standard scaler
+2025-03-29 10:00:51,198 - src.data_processing - INFO - Feature scaling completed
+2025-03-29 10:00:51,199 - src.hyperparameter_tuning - INFO - Treating as a classification problem
+2025-03-29 10:00:51,199 - src.hyperparameter_tuning - INFO - Running lightgbm hyperparameter optimization with 50 trials
+2025-03-29 10:03:53,684 - src.hyperparameter_tuning - INFO - Best AUC: 0.8997
+2025-03-29 10:03:53,695 - src.hyperparameter_tuning - INFO - Best parameters: {'n_estimators': 270, 'max_depth': 8, 'learning_rate': 0.07756910956372358, 'num_leaves': 37, 'subsample': 0.6763443461930696, 'colsample_bytree': 0.829423825004467, 'min_child_samples': 31, 'reg_alpha': 7.958120132858655, 'reg_lambda': 1.4699930487801436e-05, 'is_unbalance': False}
+2025-03-29 10:03:53,733 - src.hyperparameter_tuning - INFO - Training lightgbm model with optimized parameters
+2025-03-29 10:03:54,125 - src.hyperparameter_tuning - INFO - Validation AUC: 0.8713
+2025-03-29 10:03:54,128 - src.hyperparameter_tuning - INFO - Training final model on all data
+2025-03-29 10:03:54,643 - src.submission - INFO - Creating submission file
+2025-03-29 10:03:54,768 - src.submission - INFO - Submission saved to submissions/lightgbm_opt_20250329_100354.csv
+2025-03-29 10:03:54,769 - src.hyperparameter_tuning - INFO - Submission file created: submissions/lightgbm_opt_20250329_100354.csv
+2025-03-29 10:03:54,778 - src.hyperparameter_tuning - INFO - Best parameters saved to best_params_lightgbm_20250329_100354.json
+2025-03-29 10:04:05,814 - src.data_processing - INFO - Loading data from data/train.csv and data/test.csv
+2025-03-29 10:04:05,843 - src.data_processing - INFO - Train shape: (2190, 13), Test shape: (730, 12)
+2025-03-29 10:04:05,844 - src.feature_engineering - INFO - Creating new features
+2025-03-29 10:04:05,865 - src.feature_engineering - INFO - Created 4 new features: ['wind_x', 'wind_y', 'temp_range', 'cloud_humidity']
+2025-03-29 10:04:05,865 - src.feature_engineering - INFO - Creating new features
+2025-03-29 10:04:05,867 - src.feature_engineering - INFO - Created 4 new features: ['wind_x', 'wind_y', 'temp_range', 'cloud_humidity']
+2025-03-29 10:04:05,868 - src.data_processing - INFO - Cleaning train dataset
+2025-03-29 10:04:05,916 - src.data_processing - INFO - Capped 4 outliers in column pressure
+2025-03-29 10:04:05,928 - src.data_processing - INFO - Capped 1 outliers in column mintemp
+2025-03-29 10:04:05,931 - src.data_processing - INFO - Capped 26 outliers in column dewpoint
+2025-03-29 10:04:05,948 - src.data_processing - INFO - Capped 28 outliers in column humidity
+2025-03-29 10:04:05,950 - src.data_processing - INFO - Capped 129 outliers in column cloud
+2025-03-29 10:04:05,967 - src.data_processing - INFO - Capped 28 outliers in column windspeed
+2025-03-29 10:04:05,981 - src.data_processing - INFO - Capped 8 outliers in column wind_x
+2025-03-29 10:04:05,983 - src.data_processing - INFO - Capped 2 outliers in column wind_y
+2025-03-29 10:04:05,999 - src.data_processing - INFO - Capped 22 outliers in column temp_range
+2025-03-29 10:04:06,001 - src.data_processing - INFO - Capped 54 outliers in column cloud_humidity
+2025-03-29 10:04:06,001 - src.data_processing - INFO - Cleaned train dataset, shape: (2190, 17)
+2025-03-29 10:04:06,011 - src.data_processing - INFO - Cleaning test dataset
+2025-03-29 10:04:06,030 - src.data_processing - INFO - Cleaned test dataset, shape: (730, 16)
+2025-03-29 10:04:06,031 - src.data_processing - INFO - Splitting data with test_size=0.2, random_state=42
+2025-03-29 10:04:06,047 - src.data_processing - INFO - Split data - X_train: (1752, 15), X_val: (438, 15)
+2025-03-29 10:04:06,050 - src.data_processing - INFO - Scaling features using standard scaler
+2025-03-29 10:04:06,084 - src.data_processing - INFO - Feature scaling completed
+2025-03-29 10:04:06,085 - src.hyperparameter_tuning - INFO - Treating as a classification problem
+2025-03-29 10:04:06,092 - src.hyperparameter_tuning - INFO - Running catboost hyperparameter optimization with 50 trials
+2025-03-29 10:13:39,821 - src.hyperparameter_tuning - INFO - Best AUC: 0.8994
+2025-03-29 10:13:39,826 - src.hyperparameter_tuning - INFO - Best parameters: {'iterations': 119, 'depth': 3, 'learning_rate': 0.0793818386577882, 'l2_leaf_reg': 0.5996537623330089, 'random_strength': 7.553592434650045, 'bagging_temperature': 3.0810865666581937, 'subsample': 0.6638931889134149, 'colsample_bylevel': 0.6722947237063621}
+2025-03-29 10:13:39,851 - src.hyperparameter_tuning - INFO - Training catboost model with optimized parameters
+2025-03-29 10:13:40,222 - src.hyperparameter_tuning - INFO - Validation AUC: 0.8711
+2025-03-29 10:13:40,223 - src.hyperparameter_tuning - INFO - Training final model on all data
+2025-03-29 10:13:40,556 - src.submission - INFO - Creating submission file
+2025-03-29 10:13:40,715 - src.submission - INFO - Submission saved to submissions/catboost_opt_20250329_101340.csv
+2025-03-29 10:13:40,715 - src.hyperparameter_tuning - INFO - Submission file created: submissions/catboost_opt_20250329_101340.csv
+2025-03-29 10:13:40,722 - src.hyperparameter_tuning - INFO - Best parameters saved to best_params_catboost_20250329_101340.json
+2025-03-29 10:26:44,833 - src.data_processing - INFO - Loading data from data/train.csv and data/test.csv
+2025-03-29 10:26:44,857 - src.data_processing - INFO - Train shape: (2190, 13), Test shape: (730, 12)
+2025-03-29 10:26:44,858 - src.feature_engineering - INFO - Creating new features
+2025-03-29 10:26:44,866 - src.feature_engineering - INFO - Created 4 new features: ['wind_x', 'wind_y', 'temp_range', 'cloud_humidity']
+2025-03-29 10:26:44,867 - src.feature_engineering - INFO - Creating new features
+2025-03-29 10:26:44,869 - src.feature_engineering - INFO - Created 4 new features: ['wind_x', 'wind_y', 'temp_range', 'cloud_humidity']
+2025-03-29 10:26:44,869 - src.data_processing - INFO - Cleaning train dataset
+2025-03-29 10:26:44,901 - src.data_processing - INFO - Capped 4 outliers in column pressure
+2025-03-29 10:26:44,912 - src.data_processing - INFO - Capped 1 outliers in column mintemp
+2025-03-29 10:26:44,915 - src.data_processing - INFO - Capped 26 outliers in column dewpoint
+2025-03-29 10:26:44,924 - src.data_processing - INFO - Capped 28 outliers in column humidity
+2025-03-29 10:26:44,930 - src.data_processing - INFO - Capped 129 outliers in column cloud
+2025-03-29 10:26:44,936 - src.data_processing - INFO - Capped 28 outliers in column windspeed
+2025-03-29 10:26:44,943 - src.data_processing - INFO - Capped 8 outliers in column wind_x
+2025-03-29 10:26:44,945 - src.data_processing - INFO - Capped 2 outliers in column wind_y
+2025-03-29 10:26:44,949 - src.data_processing - INFO - Capped 22 outliers in column temp_range
+2025-03-29 10:26:44,951 - src.data_processing - INFO - Capped 54 outliers in column cloud_humidity
+2025-03-29 10:26:44,952 - src.data_processing - INFO - Cleaned train dataset, shape: (2190, 17)
+2025-03-29 10:26:44,952 - src.data_processing - INFO - Cleaning test dataset
+2025-03-29 10:26:44,961 - src.data_processing - INFO - Cleaned test dataset, shape: (730, 16)
+2025-03-29 10:26:44,961 - src.data_processing - INFO - Splitting data with test_size=0.2, random_state=42
+2025-03-29 10:26:44,966 - src.data_processing - INFO - Split data - X_train: (1752, 15), X_val: (438, 15)
+2025-03-29 10:26:44,968 - src.data_processing - INFO - Scaling features using standard scaler
+2025-03-29 10:26:44,980 - src.data_processing - INFO - Feature scaling completed
+2025-03-29 10:26:44,982 - src.hyperparameter_tuning - INFO - Treating as a classification problem
+2025-03-29 10:26:44,982 - src.hyperparameter_tuning - INFO - Running lightgbm hyperparameter optimization with 50 trials
+2025-03-29 10:29:29,806 - src.hyperparameter_tuning - INFO - Best AUC: 0.9004
+2025-03-29 10:29:29,810 - src.hyperparameter_tuning - INFO - Best parameters: {'n_estimators': 692, 'max_depth': 4, 'learning_rate': 0.03774033064425131, 'num_leaves': 64, 'subsample': 0.7306559331142793, 'colsample_bytree': 0.9418739931491102, 'min_child_samples': 21, 'reg_alpha': 9.296711226897052, 'reg_lambda': 0.047019018708812914, 'is_unbalance': False}
+2025-03-29 10:29:29,852 - src.hyperparameter_tuning - INFO - Training lightgbm model with optimized parameters
+2025-03-29 10:29:30,560 - src.hyperparameter_tuning - INFO - Validation AUC: 0.8707
+2025-03-29 10:29:30,561 - src.hyperparameter_tuning - INFO - Training final model on all data
+2025-03-29 10:29:31,319 - src.submission - INFO - Creating submission file
+2025-03-29 10:29:31,398 - src.submission - INFO - Submission saved to submissions/lightgbm_opt_20250329_102931.csv
+2025-03-29 10:29:31,399 - src.hyperparameter_tuning - INFO - Submission file created: submissions/lightgbm_opt_20250329_102931.csv
+2025-03-29 10:29:31,401 - src.hyperparameter_tuning - INFO - Best parameters saved to best_params_lightgbm_20250329_102931.json
