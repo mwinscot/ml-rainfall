@@ -31,9 +31,31 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+def load_api_key():
+    """Load API key from environment variable or local config file."""
+    api_key = os.environ.get("OPENWEATHER_API_KEY", "")
+    
+    # If environment variable is not set, try to load from config file
+    if not api_key:
+        try:
+            with open('../.env.local', 'r') as f:
+                for line in f:
+                    if line.startswith('OPENWEATHER_API_KEY='):
+                        api_key = line.strip().split('=')[1].strip('"\'')
+                        break
+        except FileNotFoundError:
+            logger.error("API key not found. Please set OPENWEATHER_API_KEY environment variable")
+            logger.error("or create a .env.local file with OPENWEATHER_API_KEY=your_key")
+    
+    return api_key
+
 def main():
     # Configuration
-    api_key = "80d4ccaf714669a225af28712fccd048"  # Replace with your valid OpenWeatherMap API key
+    api_key = load_api_key()  # Load API key securely
+    if not api_key:
+        logger.error("No API key provided. Exiting.")
+        return
+        
     city_name = "Portland,OR"  # E.g., "London,UK"
     model_path = "../models/catboost_model_20250330_085105.cbm"  # Using the model you specified
     forecast_days = 8  # Number of days to forecast

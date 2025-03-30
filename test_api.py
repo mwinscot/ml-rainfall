@@ -1,11 +1,29 @@
 import requests
 import json
+import os
 from datetime import datetime
 
 def test_api_call():
     """Test the OpenWeatherMap OneCall API v3.0"""
-    # Your API key here
-    api_key = "80d4ccaf714669a225af28712fccd048"
+    # Get API key from environment variable or config file
+    api_key = os.environ.get("OPENWEATHER_API_KEY", "")
+    
+    # If environment variable is not set, try to load from config file
+    if not api_key:
+        try:
+            with open('.env.local', 'r') as f:
+                for line in f:
+                    if line.startswith('OPENWEATHER_API_KEY='):
+                        api_key = line.strip().split('=')[1].strip('"\'')
+                        break
+        except FileNotFoundError:
+            print("WARNING: API key not found. Please set OPENWEATHER_API_KEY environment variable")
+            print("or create a .env.local file with OPENWEATHER_API_KEY=your_key")
+            return
+    
+    if not api_key:
+        print("ERROR: No API key provided. Exiting.")
+        return
     
     # Portland, OR coordinates
     lat = 45.5234

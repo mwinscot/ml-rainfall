@@ -48,6 +48,13 @@ Desktop.ini
 *.pkl
 *.pickle
 
+# Environment variables and secrets
+.env
+.env.local
+.env.*
+*_key*
+*_secret*
+
 # Data
 data/*.csv
 
