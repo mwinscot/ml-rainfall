@@ -4,7 +4,6 @@ __pycache__/
 *$py.class
 *.so
 .Python
-env/
 build/
 develop-eggs/
 dist/
@@ -27,9 +26,7 @@ ENV/
 # Logs
 *.log
 logs/
-
-# Model files (optional, remove if you want to include them)
-# *.cbm
+catboost_info/
 
 # Jupyter Notebook
 .ipynb_checkpoints
@@ -37,8 +34,24 @@ logs/
 # VS Code
 .vscode/
 
-# CatBoost info
-catboost_info/
+# macOS
+.DS_Store
 
-# Personal settings
-.env
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Large files
+*.hdf5
+*.h5
+*.pkl
+*.pickle
+
+# Data
+data/*.csv
+
+# Keep test data if it's small enough
+!data/test.csv
+!data/train.csv
+!data/sample_submission.csv
