@@ -1,11 +1,9 @@
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import PolynomialFeatures
-from sklearn.decomposition import PCA
-from sklearn.cluster import KMeans
 import logging
 
-# Set up logging
+# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -16,203 +14,229 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-def create_polynomial_features(X_train, X_val=None, X_test=None, degree=2):
-    """Create polynomial features."""
+def create_advanced_weather_features(df):
+    """Create specialized weather-related features."""
+    logger.info("Creating advanced weather features")
+    df_new = df.copy()
+    
+    # Temperature-humidity interaction (heat index approximation)
+    if all(col in df.columns for col in ['temperature', 'humidity']):
+        df_new['temp_humidity_index'] = df_new['temperature'] * df_new['humidity'] / 100
+        logger.info("Created temp_humidity_index feature")
+    
+    # Dew point depression (difference between temp and dewpoint)
+    if all(col in df.columns for col in ['temperature', 'dewpoint']):
+        df_new['dewpoint_depression'] = df_new['temperature'] - df_new['dewpoint']
+        logger.info("Created dewpoint_depression feature")
+    
+    # Wind chill factor
+    if all(col in df.columns for col in ['temperature', 'windspeed']):
+        # Simple approximation
+        df_new['wind_chill'] = 13.12 + 0.6215*df_new['temperature'] - 11.37*(df_new['windspeed']**0.16) + 0.3965*df_new['temperature']*(df_new['windspeed']**0.16)
+        logger.info("Created wind_chill feature")
+    
+    # Vapor pressure (approximation)
+    if 'dewpoint' in df.columns:
+        df_new['vapor_pressure'] = 6.11 * 10**(7.5 * df_new['dewpoint'] / (237.3 + df_new['dewpoint']))
+        logger.info("Created vapor_pressure feature")
+    
+    # Potential rainfall indicator
+    if all(col in df.columns for col in ['humidity', 'cloud']):
+        df_new['rainfall_potential'] = df_new['humidity'] * df_new['cloud'] / 100
+        logger.info("Created rainfall_potential feature")
+    
+    # Diurnal temperature range (if available)
+    if all(col in df.columns for col in ['maxtemp', 'mintemp']):
+        df_new['temp_range'] = df_new['maxtemp'] - df_new['mintemp']
+        logger.info("Created temp_range feature")
+    
+    # Count new features created
+    new_features = set(df_new.columns) - set(df.columns)
+    logger.info(f"Created {len(new_features)} new weather features: {new_features}")
+    
+    return df_new
+
+def create_polynomial_interactions(df, degree=2):
+    """Create polynomial features for key weather variables."""
     logger.info(f"Creating polynomial features with degree {degree}")
     
-    # Initialize the transformer
-    poly = PolynomialFeatures(degree=degree, include_bias=False)
+    # Select important columns that might have non-linear relationships
+    important_cols = ['temperature', 'humidity', 'pressure', 'windspeed', 'cloud']
+    available_cols = [col for col in important_cols if col in df.columns]
     
-    # Fit and transform training data
-    X_train_poly = pd.DataFrame(
-        poly.fit_transform(X_train), 
-        columns=poly.get_feature_names_out(X_train.columns),
-        index=X_train.index
-    )
+    if not available_cols:
+        logger.warning("No important columns found for polynomial features")
+        return df
     
-    # Transform validation data if provided
-    if X_val is not None:
-        X_val_poly = pd.DataFrame(
-            poly.transform(X_val),
-            columns=poly.get_feature_names_out(X_val.columns),
-            index=X_val.index
-        )
-    else:
-        X_val_poly = None
-    
-    # Transform test data if provided
-    if X_test is not None:
-        X_test_poly = pd.DataFrame(
-            poly.transform(X_test),
-            columns=poly.get_feature_names_out(X_test.columns),
-            index=X_test.index
-        )
-    else:
-        X_test_poly = None
-    
-    logger.info(f"Created {X_train_poly.shape[1]} polynomial features")
-    
-    if X_val is not None and X_test is not None:
-        return X_train_poly, X_val_poly, X_test_poly
-    elif X_val is not None:
-        return X_train_poly, X_val_poly
-    elif X_test is not None:
-        return X_train_poly, X_test_poly
-    else:
-        return X_train_poly
-
-def create_pca_features(X_train, X_val=None, X_test=None, n_components=5):
-    """Create PCA features."""
-    logger.info(f"Creating PCA features with {n_components} components")
-    
-    # Initialize the transformer
-    pca = PCA(n_components=n_components)
-    
-    # Fit and transform training data
-    X_train_pca = pd.DataFrame(
-        pca.fit_transform(X_train),
-        columns=[f'pca_{i+1}' for i in range(n_components)],
-        index=X_train.index
-    )
-    
-    # Transform validation data if provided
-    if X_val is not None:
-        X_val_pca = pd.DataFrame(
-            pca.transform(X_val),
-            columns=[f'pca_{i+1}' for i in range(n_components)],
-            index=X_val.index
-        )
-    else:
-        X_val_pca = None
-    
-    # Transform test data if provided
-    if X_test is not None:
-        X_test_pca = pd.DataFrame(
-            pca.transform(X_test),
-            columns=[f'pca_{i+1}' for i in range(n_components)],
-            index=X_test.index
-        )
-    else:
-        X_test_pca = None
-    
-    # Log variance explained
-    logger.info(f"Variance explained by components: {pca.explained_variance_ratio_}")
-    logger.info(f"Total variance explained: {sum(pca.explained_variance_ratio_):.4f}")
-    
-    if X_val is not None and X_test is not None:
-        return X_train_pca, X_val_pca, X_test_pca, pca
-    elif X_val is not None:
-        return X_train_pca, X_val_pca, pca
-    elif X_test is not None:
-        return X_train_pca, X_test_pca, pca
-    else:
-        return X_train_pca, pca
-
-def create_cluster_features(X_train, X_val=None, X_test=None, n_clusters=5):
-    """Create cluster membership features."""
-    logger.info(f"Creating cluster features with {n_clusters} clusters")
-    
-    # Initialize KMeans
-    kmeans = KMeans(n_clusters=n_clusters, random_state=42)
-    
-    # Fit and predict on training data
-    X_train_cluster = pd.DataFrame(
-        {'cluster': kmeans.fit_predict(X_train)},
-        index=X_train.index
-    )
-    
-    # One-hot encode the cluster labels
-    X_train_cluster = pd.get_dummies(X_train_cluster, columns=['cluster'], prefix='cluster')
-    
-    # Predict on validation data if provided
-    if X_val is not None:
-        X_val_cluster = pd.DataFrame(
-            {'cluster': kmeans.predict(X_val)},
-            index=X_val.index
-        )
-        X_val_cluster = pd.get_dummies(X_val_cluster, columns=['cluster'], prefix='cluster')
-        
-        # Ensure all clusters are represented in validation set
-        for i in range(n_clusters):
-            if f'cluster_{i}' not in X_val_cluster.columns:
-                X_val_cluster[f'cluster_{i}'] = 0
-    else:
-        X_val_cluster = None
-    
-    # Predict on test data if provided
-    if X_test is not None:
-        X_test_cluster = pd.DataFrame(
-            {'cluster': kmeans.predict(X_test)},
-            index=X_test.index
-        )
-        X_test_cluster = pd.get_dummies(X_test_cluster, columns=['cluster'], prefix='cluster')
-        
-        # Ensure all clusters are represented in test set
-        for i in range(n_clusters):
-            if f'cluster_{i}' not in X_test_cluster.columns:
-                X_test_cluster[f'cluster_{i}'] = 0
-    else:
-        X_test_cluster = None
-    
-    logger.info(f"Created {X_train_cluster.shape[1]} cluster features")
-    
-    if X_val is not None and X_test is not None:
-        return X_train_cluster, X_val_cluster, X_test_cluster, kmeans
-    elif X_val is not None:
-        return X_train_cluster, X_val_cluster, kmeans
-    elif X_test is not None:
-        return X_train_cluster, X_test_cluster, kmeans
-    else:
-        return X_train_cluster, kmeans
-
-def add_advanced_features(X_train, X_val=None, X_test=None):
-    """Create all advanced features and combine them."""
-    logger.info("Creating advanced features")
-    
-    # Keep only a subset of original features to reduce dimensionality for polynomial features
-    important_features = ['temperature', 'humidity', 'pressure', 'windspeed', 'cloud']
-    X_train_subset = X_train[important_features].copy() if all(col in X_train.columns for col in important_features) else X_train.copy()
-    
-    if X_val is not None:
-        X_val_subset = X_val[important_features].copy() if all(col in X_val.columns for col in important_features) else X_val.copy()
-    else:
-        X_val_subset = None
-        
-    if X_test is not None:
-        X_test_subset = X_test[important_features].copy() if all(col in X_test.columns for col in important_features) else X_test.copy()
-    else:
-        X_test_subset = None
+    # Select the data
+    data = df[available_cols].copy()
     
     # Create polynomial features
-    logger.info("Creating polynomial features")
-    X_train_poly, X_val_poly, X_test_poly = create_polynomial_features(
-        X_train_subset, X_val_subset, X_test_subset, degree=2
-    ) if X_val is not None and X_test is not None else (None, None, None)
+    poly = PolynomialFeatures(degree=degree, include_bias=False, interaction_only=False)
+    poly_features = poly.fit_transform(data)
     
-    # Create PCA features
-    logger.info("Creating PCA features")
-    X_train_pca, X_val_pca, X_test_pca, _ = create_pca_features(
-        X_train, X_val, X_test, n_components=min(5, X_train.shape[1]-1)
-    ) if X_val is not None and X_test is not None else (None, None, None, None)
+    # Create a DataFrame with the new features
+    feature_names = poly.get_feature_names_out(available_cols)
+    poly_df = pd.DataFrame(poly_features, columns=feature_names, index=df.index)
     
-    # Create cluster features
-    logger.info("Creating cluster features")
-    X_train_cluster, X_val_cluster, X_test_cluster, _ = create_cluster_features(
-        X_train, X_val, X_test, n_clusters=5
-    ) if X_val is not None and X_test is not None else (None, None, None, None)
+    # Drop the original columns to avoid duplication
+    poly_df = poly_df.drop(columns=available_cols, errors='ignore')
     
-    # Combine all features
-    logger.info("Combining all features")
-    X_train_advanced = pd.concat([X_train, X_train_poly, X_train_pca, X_train_cluster], axis=1)
+    # Concatenate with original DataFrame
+    result = pd.concat([df, poly_df], axis=1)
     
-    if X_val is not None and X_test is not None:
-        X_val_advanced = pd.concat([X_val, X_val_poly, X_val_pca, X_val_cluster], axis=1)
-        X_test_advanced = pd.concat([X_test, X_test_poly, X_test_pca, X_test_cluster], axis=1)
-        
-        logger.info(f"Final feature counts - Train: {X_train_advanced.shape[1]}, Val: {X_val_advanced.shape[1]}, Test: {X_test_advanced.shape[1]}")
-        return X_train_advanced, X_val_advanced, X_test_advanced
+    # Count new features created
+    new_features = set(result.columns) - set(df.columns)
+    logger.info(f"Created {len(new_features)} polynomial features")
     
-    elif X_val is not None:
-        X_val_advanced = pd.concat([X_val, X_val_poly, X_val_pca, X_val_cluster], axis=1)
-        
-        logger
+    return result
+
+def create_weather_event_indicators(df):
+    """Create binary indicators for specific weather conditions."""
+    logger.info("Creating weather event indicators")
+    df_new = df.copy()
+    
+    # High humidity indicator (potential for precipitation)
+    if 'humidity' in df.columns:
+        df_new['high_humidity'] = (df_new['humidity'] > 80).astype(int)
+    
+    # Heavy cloud cover
+    if 'cloud' in df.columns:
+        df_new['heavy_cloud'] = (df_new['cloud'] > 70).astype(int)
+    
+    # Strong wind
+    if 'windspeed' in df.columns:
+        df_new['strong_wind'] = (df_new['windspeed'] > df_new['windspeed'].quantile(0.75)).astype(int)
+    
+    # Pressure drop (indicates potential for storms)
+    if 'pressure' in df.columns:
+        # Calculate the difference from standard pressure (1013.25 hPa)
+        df_new['pressure_drop'] = (df_new['pressure'] < 1010).astype(int)
+    
+    # Temperature-dewpoint convergence (indicates potential precipitation)
+    if all(col in df.columns for col in ['temperature', 'dewpoint']):
+        df_new['temp_dewpoint_close'] = ((df_new['temperature'] - df_new['dewpoint']) < 2.5).astype(int)
+    
+    # Count new features created
+    new_features = set(df_new.columns) - set(df.columns)
+    logger.info(f"Created {len(new_features)} weather event indicators: {new_features}")
+    
+    return df_new
+
+def bin_numerical_features(df):
+    """Bin numerical features into categories."""
+    logger.info("Binning numerical features")
+    df_new = df.copy()
+    
+    # Bin humidity into categories
+    if 'humidity' in df.columns:
+        bins = [0, 30, 60, 80, 100]
+        labels = ['very_low', 'low', 'moderate', 'high']
+        df_new['humidity_binned'] = pd.cut(df_new['humidity'], bins=bins, labels=labels)
+        # Convert to one-hot encoding
+        humidity_dummies = pd.get_dummies(df_new['humidity_binned'], prefix='humidity')
+        df_new = pd.concat([df_new, humidity_dummies], axis=1)
+        df_new = df_new.drop('humidity_binned', axis=1)
+    
+    # Bin cloud cover
+    if 'cloud' in df.columns:
+        bins = [0, 25, 50, 75, 100]
+        labels = ['clear', 'partly_cloudy', 'mostly_cloudy', 'overcast']
+        df_new['cloud_binned'] = pd.cut(df_new['cloud'], bins=bins, labels=labels)
+        # Convert to one-hot encoding
+        cloud_dummies = pd.get_dummies(df_new['cloud_binned'], prefix='cloud')
+        df_new = pd.concat([df_new, cloud_dummies], axis=1)
+        df_new = df_new.drop('cloud_binned', axis=1)
+    
+    # Count new features created
+    new_features = set(df_new.columns) - set(df.columns)
+    logger.info(f"Created {len(new_features)} binned features")
+    
+    return df_new
+
+def select_important_features(X_train, y_train, X_val=None, X_test=None, threshold=0.01):
+    """Select important features based on model importance."""
+    logger.info(f"Selecting important features with threshold {threshold}")
+    
+    # Avoid circular import
+    import xgboost as xgb
+    
+    # Train a model for feature importance
+    model = xgb.XGBClassifier(
+        n_estimators=100,
+        max_depth=3,
+        learning_rate=0.1,
+        use_label_encoder=False,
+        objective='binary:logistic',
+        random_state=42
+    )
+    
+    # Fit the model
+    model.fit(X_train, y_train)
+    
+    # Select features
+    from sklearn.feature_selection import SelectFromModel
+    selector = SelectFromModel(model, threshold=threshold, prefit=True)
+    
+    # Transform data
+    X_train_selected = pd.DataFrame(
+        selector.transform(X_train),
+        columns=X_train.columns[selector.get_support()],
+        index=X_train.index
+    )
+    
+    # Get selected feature names
+    selected_features = X_train.columns[selector.get_support()]
+    logger.info(f"Selected {len(selected_features)} features out of {X_train.shape[1]}")
+    logger.info(f"Top 10 features: {selected_features[:10].tolist()}")
+    
+    results = [X_train_selected]
+    
+    # Transform validation and test data if provided
+    if X_val is not None:
+        X_val_selected = pd.DataFrame(
+            selector.transform(X_val),
+            columns=X_train.columns[selector.get_support()],
+            index=X_val.index
+        )
+        results.append(X_val_selected)
+    
+    if X_test is not None:
+        X_test_selected = pd.DataFrame(
+            selector.transform(X_test),
+            columns=X_train.columns[selector.get_support()],
+            index=X_test.index
+        )
+        results.append(X_test_selected)
+    
+    results.append(selected_features)
+    
+    return results
+
+def enhanced_feature_engineering(train_df, test_df):
+    """Apply all feature engineering steps to train and test data."""
+    logger.info("Starting enhanced feature engineering")
+    
+    # 1. Add basic weather features
+    logger.info("Creating weather-specific features...")
+    train_df = create_advanced_weather_features(train_df)
+    test_df = create_advanced_weather_features(test_df)
+    
+    # 2. Add weather event indicators
+    logger.info("Creating weather event indicators...")
+    train_df = create_weather_event_indicators(train_df)
+    test_df = create_weather_event_indicators(test_df)
+    
+    # 3. Bin numerical features
+    logger.info("Binning numerical features...")
+    train_df = bin_numerical_features(train_df)
+    test_df = bin_numerical_features(test_df)
+    
+    # 4. Add polynomial and interaction features - this can significantly increase feature count
+    logger.info("Creating polynomial features...")
+    train_df = create_polynomial_interactions(train_df, degree=2)
+    test_df = create_polynomial_interactions(test_df, degree=2)
+    
+    # Return engineered datasets
+    logger.info(f"Enhanced feature engineering complete. Train shape: {train_df.shape}, Test shape: {test_df.shape}")
+    return train_df, test_df

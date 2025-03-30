@@ -1,15 +1,10 @@
-# Byte-compiled / optimized / DLL files
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
-
-# C extensions
 *.so
-*.pyd
-*.dll
-
-# Distribution / packaging
 .Python
+env/
 build/
 develop-eggs/
 dist/
@@ -21,15 +16,20 @@ lib64/
 parts/
 sdist/
 var/
-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
 
-# Virtual environment
+# Virtual Environment
 venv/
-env/
 ENV/
+
+# Logs
+*.log
+logs/
+
+# Model files (optional, remove if you want to include them)
+# *.cbm
 
 # Jupyter Notebook
 .ipynb_checkpoints
@@ -37,28 +37,8 @@ ENV/
 # VS Code
 .vscode/
 
-# PyCharm
-.idea/
-
-# Mac OS
-.DS_Store
-
-# Model files
-*.model
-*.joblib
-*.pkl
-*.h5
-
-# Logs
-*.log
-logs/
-
-# CatBoost information
+# CatBoost info
 catboost_info/
 
-# Large data files
-data/*.csv
-!data/sample_submission.csv
-
-# Allow all files in submissions folder
-!submissions/*.csv
+# Personal settings
+.env
